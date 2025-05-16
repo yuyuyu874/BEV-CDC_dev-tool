@@ -103,18 +103,18 @@ TODO: 現在相対パスでの指定にしか対応していません
 
 
     ```bash
-    dir_teraterm='/mnt/c/Program Files (x86)/teraterm'
+    dir_teraterm="/mnt/c/Program Files (x86)/teraterm"
 
-     # ディレクトリ名はシングルクォートで囲む
+     # ディレクトリ名はダブルクォートで囲む
      # WSLでのディレクトリ名を用いる
     ```
 
 - dir_adb：adb.exe および fastboot.exe があるディレクトリ
 
     ```bash
-    dir_adb='/mnt/c/Program Files/platform-tools'
+    dir_adb="/mnt/c/Program Files/platform-tools"
 
-     # ディレクトリ名はシングルクォートで囲む
+     # ディレクトリ名はダブルクォートで囲む
      # WSLでのディレクトリ名を用いる
     ```
 
@@ -122,5 +122,24 @@ TODO: 現在相対パスでの指定にしか対応していません
 
     ![adb_devices.png](/images/adb_devices.png)
     上記の場合は、`device_num=007f0101` と設定する
+
+- work_dir：書込み用ファイルを格納するための作業用ディレクトリ
+
+    ```bash
+    work_dir="/mnt/c/work"
+
+     # ディレクトリ名はダブルクォートで囲む
+     # WSLでのディレクトリ名を用いる
+     # 必ず、windowsのドライブを指定してください。
+    ```
+
+- dir_pcat：# PCATのパスを指定
+    ```bash
+    dir_pcat="/mnt/c/Program Files (x86)/Qualcomm/PCAT/bin/PCAT.exe"
+
+     # ディレクトリ名はダブルクォートで囲む
+     # WSLでのディレクトリ名を用いる
+    ```
+
     
     
