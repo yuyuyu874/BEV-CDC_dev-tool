@@ -1,0 +1,14 @@
+if paramcnt != 2 then
+    messagebox "invalid argument" "error"
+    end
+endif
+
+PORT='/C='
+strconcat PORT param2
+
+connect PORT
+
+sendln 'reset'
+wait '#'
+
+closett

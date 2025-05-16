@@ -1,0 +1,34 @@
+if paramcnt != 3 then
+    messagebox "invalid argument" "error"
+    end
+endif
+
+PORT='/C='
+strconcat PORT param2
+
+connect PORT
+
+LV_PATH = '/firmware/verinfo/'
+QNX_PATH = '/mnt/usr/bin/'
+
+strconcat LV_PATH param2
+strconcat QNX_PATH param2
+
+COMMAND_CP = 'cp -r '
+strconcat COMMAND_CP LV_PATH
+strconcat COMMAND_CP ' /mnt/usr/bin'
+
+COMMAND_CHMOD = 'chmod +x '
+strconcat COMMAND_CHMOD QNX_PATH
+
+sendln 'mount -uw /mnt'
+
+wait '#'
+sendln COMMAND_CP
+
+wait '#'
+sendln COMMAND_CHMOD
+
+disconnect
+
+closett
