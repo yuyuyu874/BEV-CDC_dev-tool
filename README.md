@@ -1,6 +1,12 @@
 # BEV-CDC_dev-tool
 ## 概要
-BEV-CDCの開発にあたって基本的な
+BEV-CDC開発汎用ツール。
+WSLのTerminalからの書込み、シェルへの接続などをサポートします。
+
+## Version 履歴
+| Version | 日時 | 説明 |
+|-|-|-|
+| v1.0 | 2025/5/16 | 初回リリース |
 
 ## 機能一覧
 ### - fastboot
@@ -13,6 +19,7 @@ fastbootによって実機にソフトを書き込む為のインタフェース
 ### - pcat
 
 PCATアプリから実機にソフトを書き込むためのインタフェースを提供します。
+※森数さん提供のスクリプトを使わせてもらっています。
 
 | コマンド | 説明 |
 |-|-|
@@ -92,14 +99,20 @@ $ qnx push <file_path>
 TODO: 現在相対パスでの指定にしか対応していません
 
 ## セットアップ方法
-### - config.sh の設定
-- port：TeraTermでQNXと接続しているときのport番号
+### 1. 前準備
+
+### 2. config.sh の設定
+各自の環境に依って、config.sh を編集してください。基本的にwindowsのドライブのパスを入力しますが、このときに WSL が認識できる `mnt/c/` から始まるパスを入力するようにしてください。また、作業用のディレクトリは必ず、windowsのドライブ内で作成するようにしてください。（PCATの動作保証がないため）
+
+1. port：TeraTermでQNXと接続しているときのport番号
 
     ![qnx_terminal.png](/images/qnx_terminal.png)
+
+
     上記の場合は、`port=22` と設定する
 
 
-- dir_teraterm：TeraTermの .exe ファイルがあるディレクトリ
+1. dir_teraterm：TeraTermの .exe ファイルがあるディレクトリ
 
 
     ```bash
@@ -109,7 +122,7 @@ TODO: 現在相対パスでの指定にしか対応していません
      # WSLでのディレクトリ名を用いる
     ```
 
-- dir_adb：adb.exe および fastboot.exe があるディレクトリ
+1. dir_adb：adb.exe および fastboot.exe があるディレクトリ
 
     ```bash
     dir_adb="/mnt/c/Program Files/platform-tools"
@@ -118,12 +131,14 @@ TODO: 現在相対パスでの指定にしか対応していません
      # WSLでのディレクトリ名を用いる
     ```
 
-- device_num：adb devices で表示されるデバイスのシリアル番号
+1. device_num：adb devices で表示されるデバイスのシリアル番号
 
     ![adb_devices.png](/images/adb_devices.png)
+
+  
     上記の場合は、`device_num=007f0101` と設定する
 
-- work_dir：書込み用ファイルを格納するための作業用ディレクトリ
+1. work_dir：書込み用ファイルを格納するための作業用ディレクトリ
 
     ```bash
     work_dir="/mnt/c/work"
@@ -133,13 +148,15 @@ TODO: 現在相対パスでの指定にしか対応していません
      # 必ず、windowsのドライブを指定してください。
     ```
 
-- dir_pcat：# PCATのパスを指定
+1. dir_pcat：# PCATのパスを指定
     ```bash
     dir_pcat="/mnt/c/Program Files (x86)/Qualcomm/PCAT/bin/PCAT.exe"
 
      # ディレクトリ名はダブルクォートで囲む
      # WSLでのディレクトリ名を用いる
     ```
+### 3. setup.sh の実行
+
 
     
     
